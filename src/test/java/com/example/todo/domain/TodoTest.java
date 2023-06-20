@@ -16,7 +16,6 @@ class TodoTest {
     Todo todo = new Todo(title, content , owner);
     Assertions.assertEquals(todo.getTitle(), "title");
     Assertions.assertEquals(todo.getContent(), "content");
-    Assertions.assertEquals(todo.getTitle(), "title");
     Assertions.assertEquals(todo.getOwner(), "owner");
     Assertions.assertEquals(todo.isComplete(), isComplete);
     Assertions.assertNotNull(todo.getCreatedAt());
@@ -31,7 +30,6 @@ class TodoTest {
     todo.modify(modifiedTodo);
     Assertions.assertEquals(todo.getTitle(), "modifiedTitle");
     Assertions.assertEquals(todo.getContent(), "modifiedContent");
-    Assertions.assertEquals(todo.getTitle(), "title");
     Assertions.assertEquals(todo.getOwner(), "other");
     Assertions.assertNotEquals(todo.getCreatedAt(), todo.getUpdatedAt());
   }
