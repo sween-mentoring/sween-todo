@@ -28,4 +28,8 @@ public class Todo {
     this.owner = modifiedTodo.getOwner();
     updatedAt = modifiedTodo.getUpdatedAt();
   }
+
+  public void changeState() {
+    isComplete = !isComplete;
+  }
 }
