@@ -30,15 +30,32 @@ class TodoRepositoryTest {
     Assertions.assertNotNull(saved.getId());
     Assertions.assertEquals(saved.getId()+1, twiceSaved.getId());
   }
+
+  @Test
+  @DisplayName("Todo 조회 테스트")
+  public void find() {
+    //given
+    Todo todo = new Todo(title, content, owner);
+    //when
+    Todo saved = todoRepository.save(todo);
+    Todo twiceSaved = todoRepository.save(todo);
+    Todo found = todoRepository.findById(0L);
+    Todo twiceFound = todoRepository.findById(1L);
+    //then
+    Assertions.assertEquals(saved, found);
+    Assertions.assertEquals(twiceSaved, twiceFound);
+  }
+
   @Test
   @DisplayName("Todo 삭제 테스트")
   public void delete() {
+    //given
     Todo todo = new Todo(title, content, owner);
-    Todo modifiedTodo = new Todo("modifiedTitle", "modifiedContent", "other");
-    todo.modify(modifiedTodo);
-    Assertions.assertEquals(todo.getTitle(), "modifiedTitle");
-    Assertions.assertEquals(todo.getContent(), "modifiedContent");
-    Assertions.assertEquals(todo.getOwner(), "other");
-    Assertions.assertNotEquals(todo.getCreatedAt(), todo.getUpdatedAt());
+    //when
+    Todo saved = todoRepository.save(todo);
+    todoRepository.deleteById(saved.getId());
+    Todo deleted = todoRepository.findById(saved.getId());
+    //then
+    Assertions.assertNull(deleted);
   }
 }

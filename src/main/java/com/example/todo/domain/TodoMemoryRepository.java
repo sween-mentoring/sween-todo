@@ -16,11 +16,12 @@ public class TodoMemoryRepository implements TodoRepository {
 
   @Override
   public Todo findById(Long id) {
-    return null;
+    return todos.get(id);
   }
 
   @Override
   public void deleteById(Long id) {
-
+    todos.remove(id);
+    //제대로
   }
 }
