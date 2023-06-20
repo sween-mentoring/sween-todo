@@ -51,6 +51,18 @@ class TodoTest {
     Assertions.assertTrue(todo.isComplete());
   }
 
+  @Test
+  @DisplayName("Todo 완료취소 테스트")
+  public void decomplete() {
+    //given
+    Todo todo = new Todo(title, content , owner);
+    //when
+    todo.changeState();
+    todo.changeState();
+    //then
+    Assertions.assertFalse(todo.isComplete());
+  }
+
 //  @Test
 //  @DisplayName("Todo 삭제 테스트")
 //  public void delete() {
